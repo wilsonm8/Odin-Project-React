@@ -20,24 +20,24 @@ function List(props) {
   );
 }
 
-function Button({text = "Click Me!", colour = "blue", fontSize =12}){
+function Button({text = "Click Me!", colour = "blue", fontSize =12, handleClick}){
   const buttonStyle = {
     color: colour,
     fontSize: fontSize + "px"
   };
   return (
-    <button style = {buttonStyle}>{text}</button>
+    <button onClick={handleClick} style = {buttonStyle}>{text}</button>
   );
 }
 
 function App() {
   //const animals = ["Lion", "Cow", "Snake", "Lizard"];
-
+  const handleButtonClick = (url) =>{
+    window.location.href = url;
+  }
   return (
     <div>
-      <Button />
-      <Button text="Don't Click Me!" colour="red" fontSize={12} />
-      <Button text="Click Me!" colour="blue" fontSize={20} />
+      <Button handleClick = {() => handleButtonClick("https://google.com")}/>
     </div>
   )
 }
