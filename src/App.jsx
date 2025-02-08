@@ -20,26 +20,40 @@ function List(props) {
   );
 }
 
-function Button({text = "Click Me!", colour = "blue", fontSize =12, handleClick}){
+function Button({ text = "Click Me!", colour = "blue", fontSize = 12, handleClick }) {
   const buttonStyle = {
     color: colour,
     fontSize: fontSize + "px"
   };
   return (
-    <button onClick={handleClick} style = {buttonStyle}>{text}</button>
+    <button onClick={handleClick} style={buttonStyle}>{text}</button>
   );
 }
 
 function App() {
   //const animals = ["Lion", "Cow", "Snake", "Lizard"];
-  const handleButtonClick = (url) =>{
+  const colours = ["blue", "green", "yellow"];
+  const [backgroundColour, setBackgroundColour] = useState(colours[0]);
+ 
+  document.body.style.backgroundColor = backgroundColour;
+  /*const handleButtonClick = (url) => {
     window.location.href = url;
-  }
+  }*/
+ const onButtonClick = (colour) =>{
+  setBackgroundColour(colour);
+ }
+
   return (
-    <div>
-      <Button handleClick = {() => handleButtonClick("https://google.com")}/>
-    </div>
-  )
+    colours.map((colour) => (
+      <button
+        type="button"
+        key={colour}
+        onClick={() => onButtonClick(colour)}
+      >
+        {colour}
+      </button>
+    ))
+  );
 }
 
 export default App;
