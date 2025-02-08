@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+/*
 function ListItem(props) {
   return <li>{props.animal}</li>;
 }
@@ -19,8 +19,8 @@ function List(props) {
     </ul>
   );
 }
-
-function Button({ text = "Click Me!", colour = "blue", fontSize = 12, handleClick }) {
+*/
+/*function Button({ text = "Click Me!", colour = "blue", fontSize = 12, handleClick }) {
   const buttonStyle = {
     color: colour,
     fontSize: fontSize + "px"
@@ -28,30 +28,41 @@ function Button({ text = "Click Me!", colour = "blue", fontSize = 12, handleClic
   return (
     <button onClick={handleClick} style={buttonStyle}>{text}</button>
   );
-}
+}*/
 
-function App() {
-  //const animals = ["Lion", "Cow", "Snake", "Lizard"];
-  const colours = ["blue", "green", "yellow"];
-  const [backgroundColour, setBackgroundColour] = useState(colours[0]);
- 
-  document.body.style.backgroundColor = backgroundColour;
-  /*const handleButtonClick = (url) => {
-    window.location.href = url;
-  }*/
- const onButtonClick = (colour) =>{
-  setBackgroundColour(colour);
- }
+function Button({ text, colour, onButtonClick }) {
+  const [count, setCount] = useState(0);
+  const handleClick = () => {
+    (setCount(count + 1))
+    onButtonClick(colour);
+  };
 
   return (
+    <button onClick={handleClick} >{text} {count}</button>
+  );
+}
+function App() {
+  //const animals = ["Lion", "Cow", "Snake", "Lizard"];
+  /*const handleButtonClick = (url) => {
+   window.location.href = url;
+ }*/
+  const colours = ["blue", "green", "black"];
+  const [backgroundColour, setBackgroundColour] = useState(colours[0]);
+
+  document.body.style.backgroundColor = backgroundColour;
+
+  const handleButtonClick = (colour) => {
+    setBackgroundColour(colour);
+  }
+  return (
     colours.map((colour) => (
-      <button
-        type="button"
+      <Button
         key={colour}
-        onClick={() => onButtonClick(colour)}
+        text={colour}
+        colour={colour}
+        onButtonClick={handleButtonClick}
       >
-        {colour}
-      </button>
+      </Button>
     ))
   );
 }
