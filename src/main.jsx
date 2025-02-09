@@ -4,9 +4,11 @@ import './index.css'
 import App from './App.jsx'
 import Greeting from './Greeting.jsx'
 import {food} from './Food.jsx'
+import Person from './Person.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Person/>
     <App/>
     <Greeting />
     <h1>{food} is my favourite food</h1>

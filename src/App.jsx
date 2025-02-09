@@ -46,7 +46,7 @@ function App() {
   /*const handleButtonClick = (url) => {
    window.location.href = url;
  }*/
-  const colours = ["blue", "green", "black"];
+  const colours = ["blue", "green", "black","pink"];
   const [backgroundColour, setBackgroundColour] = useState(colours[0]);
 
   document.body.style.backgroundColor = backgroundColour;
